@@ -1,0 +1,100 @@
+---
+export interface Props {
+  email: string;
+}
+
+const { email } = Astro.props;
+---
+
+<section id="contacto" class="py-24 px-6" style="background: #FAFAFA;">
+  <div class="max-w-2xl mx-auto">
+    <div data-animate class="mb-12 text-center">
+      <div class="ornament mb-4">
+        <span class="font-mono text-xs tracking-widest">CONTACTO</span>
+      </div>
+      <h2 class="section-title mb-4">Hablemos</h2>
+      <p class="text-sm leading-relaxed" style="color: rgba(26,18,8,0.60);">
+        ¿Tienes un proyecto en mente o simplemente quieres saludar?<br />
+        Siempre estoy abierto a nuevas oportunidades.
+      </p>
+    </div>
+
+    <form
+      data-animate
+      id="contact-form"
+      class="space-y-5"
+      action={`mailto:${email}`}
+      method="post"
+      enctype="text/plain"
+    >
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div class="space-y-1.5">
+          <label class="font-mono text-xs tracking-widest opacity-60" style="color: var(--ink);">NOMBRE</label>
+          <input
+            type="text"
+            name="nombre"
+            required
+            placeholder="Tu nombre"
+            class="w-full px-4 py-3 text-sm bg-white/60 border outline-none transition-all placeholder-opacity-30 focus:border-gold"
+            style="border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; color: var(--ink); backdrop-filter: blur(4px);"
+          />
+        </div>
+        <div class="space-y-1.5">
+          <label class="font-mono text-xs tracking-widest opacity-60" style="color: var(--ink);">EMAIL</label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="tu@email.com"
+            class="w-full px-4 py-3 text-sm bg-white/60 border outline-none transition-all focus:border-gold"
+            style="border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; color: var(--ink); backdrop-filter: blur(4px);"
+          />
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="font-mono text-xs tracking-widest opacity-60" style="color: var(--ink);">MENSAJE</label>
+        <textarea
+          name="mensaje"
+          required
+          rows="5"
+          placeholder="Cuéntame sobre tu proyecto..."
+          class="w-full px-4 py-3 text-sm bg-white/60 border outline-none transition-all resize-none focus:border-gold"
+          style="border: 1px solid rgba(201,168,76,0.3); border-radius: 2px; color: var(--ink); backdrop-filter: blur(4px);"
+        ></textarea>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <a href={`mailto:${email}`}
+          class="font-mono text-xs tracking-wide opacity-50 hover:opacity-100 transition-opacity flex items-center gap-2"
+          style="color: var(--ink);">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {email}
+        </a>
+
+        <button
+          type="submit"
+          class="group flex items-center gap-3 px-8 py-3 text-sm font-medium tracking-wide transition-all"
+          style="background: var(--ink); color: var(--cream); border-radius: 2px;"
+        >
+          Enviar mensaje
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  input:focus, textarea:focus {
+    border-color: #FF3D8F !important;
+    box-shadow: 0 0 0 3px rgba(255,0,204,0.1), 0 0 12px rgba(255,0,204,0.15);
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(26,18,8,0.35);
+  }
+</style>

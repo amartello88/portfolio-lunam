@@ -1,0 +1,55 @@
+---
+export interface Props {
+  technologies: string[];
+}
+
+const { technologies } = Astro.props;
+
+const icons: Record<string, string> = {
+  'React': '⚛',
+  'Astro': '🚀',
+  'Tailwind': '💨',
+  'TypeScript': '🔷',
+  'Node.js': '🟢',
+  'Python': '🐍',
+  'Next.js': '▲',
+  'Vue': '💚',
+  'Svelte': '🔥',
+  'Go': '🐹',
+  'Rust': '⚙',
+  'Docker': '🐳',
+  'AWS': '☁',
+  'PostgreSQL': '🐘',
+  'MongoDB': '🍃',
+  'Git': '🔀',
+  'MySQL': '🐬',
+};
+---
+
+<section class="py-24 px-6" style="background: #FAFAFA;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="mb-12">
+      <div class="ornament mb-4">
+        <span class="font-mono text-xs tracking-widest">STACK TECNOLÓGICO</span>
+      </div>
+      <h2 class="section-title text-center">Herramientas & Tecnologías</h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      {technologies.map((tech, i) => (
+        <div
+          data-animate
+          class={`hover-lift delay-${(i % 4) + 1} group relative flex flex-col items-center gap-3 p-6 cursor-default`}
+          style="background: rgba(255,255,255,0.9); border: 1px solid rgba(255,0,204,0.2); border-radius: 2px; backdrop-filter: blur(4px);"
+        >
+          <span class="text-3xl">{icons[tech] ?? '◆'}</span>
+          <span class="font-mono text-xs tracking-wide" style="color: var(--ink);">{tech}</span>
+
+          <!-- Hover accent -->
+          <div class="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full transition-all duration-300"
+            style="background: #FF3D8F; box-shadow: 0 0 8px #FF3D8F;"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

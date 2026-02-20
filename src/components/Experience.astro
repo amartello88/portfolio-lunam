@@ -1,0 +1,59 @@
+---
+export interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
+export interface Props {
+  experiences: Experience[];
+}
+
+const { experiences } = Astro.props;
+---
+
+<section class="py-24 px-6" style="background: #FFFFFF;">
+  <div class="max-w-5xl mx-auto">
+    <div data-animate class="mb-16">
+      <div class="ornament mb-4">
+        <span class="font-mono text-xs tracking-widest">TRAYECTORIA</span>
+      </div>
+      <h2 class="section-title text-center">Experiencia Profesional</h2>
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-px" style="background: linear-gradient(to bottom, var(--gold), transparent); transform: translateX(-50%); opacity: 0.4;"></div>
+
+      <div class="flex flex-col gap-12">
+        {experiences.map((exp, i) => (
+          <div data-animate class={`relative flex flex-col md:flex-row gap-6 md:gap-16 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <!-- Timeline dot -->
+            <div class="absolute left-0 md:left-1/2 top-2 w-3 h-3 rounded-full border-2 -translate-x-1/2"
+              style="background: var(--cream); border-color: var(--gold);">
+            </div>
+
+            <!-- Period (shows on opposite side) -->
+            <div class={`hidden md:flex md:w-1/2 ${i % 2 === 0 ? 'justify-end pr-16 pt-1' : 'justify-start pl-16 pt-1'}`}>
+              <span class="font-mono text-xs tracking-widest opacity-50" style="color: var(--ink);">{exp.period}</span>
+            </div>
+
+            <!-- Content -->
+            <div class={`md:w-1/2 ${i % 2 === 0 ? 'md:pl-16' : 'md:pr-16'} pl-8 md:pl-auto`}>
+              <div class="p-6 hover-lift" style="background: #FAFAFA; border: 1px solid rgba(255,0,204,0.15); border-radius: 2px; backdrop-filter: blur(4px);">
+                <span class="md:hidden font-mono text-xs tracking-widest opacity-50 block mb-2" style="color: var(--ink);">{exp.period}</span>
+                <h3 class="font-display font-bold text-xl mb-1 tracking-tight" style="color: var(--ink);">{exp.title}</h3>
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-4 h-px" style="background: var(--gold);"></div>
+                  <span class="font-mono text-xs" style="color: var(--gold);">{exp.company}</span>
+                </div>
+                <p class="text-sm leading-relaxed" style="color: rgba(26,18,8,0.65);">{exp.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

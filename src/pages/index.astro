@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import TechStack from '../components/TechStack.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// =============================================
+// 👇 PERSONALIZA AQUÍ TUS DATOS
+// =============================================
+
+const profile = {
+  name: 'Luna Martello',
+  role: 'Full Stack Developer',
+  bio: 'Desarrolladora Full Stack apasionada por crear experiencias digitales elegantes y funcionales. Especializada en el ecosistema Astro.',
+  avatar: '/perfil.jpg',
+  email: 'lunafreelancerr@gmail.com',
+  social: {
+    github: 'https://github.com/tuusuario',
+    linkedin: 'https://linkedin.com/in/tuusuario',
+    whatsapp: '541136081560',
+    email: 'lunafreelancerr@gmail.com',
+  },
+};
+
+const technologies = [
+  'React', 'Astro', 'Tailwind', 'TypeScript',
+  'Node.js', 'MongoDB', 'Git', 'MySQL',
+];
+
+const experiences = [
+  {
+    title: 'Senior Full Stack Developer',
+    company: 'Tech Corp',
+    period: '2022 — Presente',
+    description: 'Lideré el desarrollo de aplicaciones web escalables utilizando React, Node.js y AWS. Reduje el tiempo de carga en un 40% y mejoré la experiencia del usuario.',
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Startup Inc',
+    period: '2020 — 2022',
+    description: 'Construí interfaces de usuario responsivas y optimicé el rendimiento para sitios de e-commerce con alto tráfico. Implementé un design system desde cero.',
+  },
+  {
+    title: 'Junior Developer',
+    company: 'Agency XYZ',
+    period: '2018 — 2020',
+    description: 'Desarrollé y mantuve sitios web para clientes de distintas industrias. Introduje mejores prácticas de accesibilidad y SEO técnico.',
+  },
+];
+
+const projects = [
+  {
+    title: 'Astro vCard',
+    description: 'Un template de portfolio minimalista, responsivo y con buen SEO, construido con Astro y Tailwind CSS.',
+    image: '/proyecto.jpg',
+    tags: ['Astro', 'Tailwind', 'TypeScript'],
+    url: 'https://v-card-template.vercel.app',
+    github: 'https://github.com/tuusuario/vcard',
+  },
+  {
+    title: 'E-commerce Dashboard',
+    description: 'Panel de control completo para gestionar tiendas online, con analíticas en tiempo real y gestión de inventario.',
+    image: '/proyecto1.jpg',
+    tags: ['React', 'Next.js', 'Supabase'],
+    url: '#',
+    github: 'https://github.com/tuusuario/dashboard',
+  },
+  {
+    title: 'API de Pagos',
+    description: 'Microservicio robusto para procesar pagos con integración a Stripe, manejo de webhooks y reconciliación automática.',
+    image: '',
+    tags: ['Node.js', 'TypeScript', 'PostgreSQL'],
+    github: 'https://github.com/tuusuario/payments-api',
+  },
+  {
+    title: 'CLI DevTools',
+    description: 'Herramienta de línea de comandos para automatizar flujos de trabajo de desarrollo, generación de boilerplate y deploy.',
+    image: '',
+    tags: ['Python', 'Click', 'Docker'],
+    github: 'https://github.com/tuusuario/devtools',
+  },
+];
+---
+
+<Layout title={`${profile.name} — ${profile.role}`} description={profile.bio}>
+  <div id="top">
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
+      style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,61,143,0.15);">
+      <span class="font-display font-bold text-lg tracking-tight" style="color: var(--ink);">{profile.name}</span>
+      <div class="hidden sm:flex items-center gap-6">
+        {['Stack', 'Experiencia', 'Proyectos', 'Contacto'].map(item => (
+          <a
+            href={`#${item.toLowerCase()}`}
+            class="font-mono text-xs tracking-widest transition-colors"
+            style="color: rgba(13,13,13,0.55);"
+          >
+            {item.toUpperCase()}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <main>
+      <div id="inicio">
+        <Hero
+          name={profile.name}
+          role={profile.role}
+          bio={profile.bio}
+          avatar={profile.avatar}
+          social={profile.social}
+        />
+      </div>
+
+      <div id="stack">
+        <TechStack technologies={technologies} />
+      </div>
+
+      <div id="experiencia">
+        <Experience experiences={experiences} />
+      </div>
+
+      <div id="proyectos">
+        <Projects projects={projects} />
+      </div>
+
+      <Contact email={profile.email} />
+    </main>
+
+    <Footer name={profile.name} />
+  </div>
+</Layout>

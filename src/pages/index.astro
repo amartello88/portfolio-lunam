@@ -91,18 +91,143 @@ const projects = [
     <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
       style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,61,143,0.15);">
       <span class="font-display font-bold text-lg tracking-tight" style="color: var(--ink);">{profile.name}</span>
+
+      <!-- Desktop links -->
       <div class="hidden sm:flex items-center gap-6">
         {['Stack', 'Experiencia', 'Proyectos', 'Contacto'].map(item => (
           <a
             href={`#${item.toLowerCase()}`}
-            class="font-mono text-xs tracking-widest transition-colors"
+            class="font-mono text-xs tracking-widest transition-colors hover-pink"
             style="color: rgba(13,13,13,0.55);"
           >
             {item.toUpperCase()}
           </a>
         ))}
       </div>
+
+      <!-- Hamburger button (mobile) -->
+      <button id="menu-btn" class="sm:hidden flex flex-col gap-1.5 p-1" aria-label="Menú">
+        <span class="hamburger-line line-1"></span>
+        <span class="hamburger-line line-2"></span>
+        <span class="hamburger-line line-3"></span>
+      </button>
     </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu"
+      class="fixed top-0 left-0 right-0 bottom-0 z-40 flex flex-col items-center justify-center gap-10 hidden"
+      style="background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);">
+      {['Stack', 'Experiencia', 'Proyectos', 'Contacto'].map((item, i) => (
+        <a
+          href={`#${item.toLowerCase()}`}
+          class="mobile-link font-display font-bold text-4xl tracking-tight"
+          style={`color: var(--ink); --delay: ${i * 0.08}s;`}
+        >
+          {item}
+        </a>
+      ))}
+    </div>
+
+    <script>
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const links = document.querySelectorAll('.mobile-link');
+
+      btn?.addEventListener('click', () => {
+        const isOpen = !menu?.classList.contains('hidden');
+        if (isOpen) {
+          // Cerrar: animar hacia afuera
+          links.forEach((link, i) => {
+            (link as HTMLElement).style.animation = `menuOut 0.3s ease forwards ${i * 0.06}s`;
+          });
+          setTimeout(() => menu?.classList.add('hidden'), 400);
+          btn?.classList.remove('open');
+        } else {
+          menu?.classList.remove('hidden');
+          btn?.classList.add('open');
+          // Abrir: animar hacia adentro con delay escalonado
+          links.forEach((link, i) => {
+            (link as HTMLElement).style.animation = `menuIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards ${i * 0.08}s`;
+          });
+        }
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          menu?.classList.add('hidden');
+          btn?.classList.remove('open');
+        });
+      });
+    </script>
+
+    <style>
+      .hamburger-line {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--ink);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: center;
+      }
+      #menu-btn.open .line-1 {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #menu-btn.open .line-2 {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      #menu-btn.open .line-3 {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .mobile-link {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: color 0.2s ease;
+        position: relative;
+      }
+      .mobile-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #FF3D8F;
+        transition: width 0.3s ease;
+      }
+      .mobile-link:hover::after {
+        width: 100%;
+      }
+      .mobile-link:hover {
+        color: #FF3D8F !important;
+      }
+
+      @keyframes menuIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes menuOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+      }
+
+      .hover-pink:hover {
+        color: #FF3D8F !important;
+      }
+    </style>
 
     <main>
       <div id="inicio">

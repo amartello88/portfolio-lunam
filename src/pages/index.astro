@@ -1,112 +1,137 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import TechStack from '../components/TechStack.astro';
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TechStack from "../components/TechStack.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 
 // =============================================
 // 👇 PERSONALIZA AQUÍ TUS DATOS
 // =============================================
 
 const profile = {
-  name: 'Luna Martello',
-  role: 'Full Stack Developer',
-  bio: 'Desarrolladora Full Stack apasionada por crear experiencias digitales elegantes y funcionales. Especializada en el ecosistema Astro.',
-  avatar: '/perfil.jpg',
-  email: 'lunafreelancerr@gmail.com',
+  name: "Luna Martello",
+  role: "Full Stack Developer",
+  bio: "Desarrolladora Full Stack apasionada por crear experiencias digitales elegantes y funcionales. Especializada en el ecosistema Astro.",
+  avatar: "/perfil1.jpeg",
+  email: "lunafreelancerr@gmail.com",
   social: {
-    github: 'https://github.com/tuusuario',
-    linkedin: 'https://linkedin.com/in/tuusuario',
-    whatsapp: '541136081560',
-    email: 'lunafreelancerr@gmail.com',
+    github: "https://github.com/amartello88",
+    linkedin: "https://www.linkedin.com/in/ayelenbusca/",
+    whatsapp: "541136081560",
+    email: "lunafreelancerr@gmail.com",
   },
 };
 
 const technologies = [
-  'React', 'Astro', 'Tailwind', 'TypeScript',
-  'Node.js', 'MongoDB', 'Git', 'MySQL',
+  "React",
+  "Astro",
+  "Tailwind",
+  "TypeScript",
+  "Node.js",
+  "MongoDB",
+  "Git",
+  "MySQL",
 ];
 
 const experiences = [
   {
-    title: 'Senior Full Stack Developer',
-    company: 'Tech Corp',
-    period: '2022 — Presente',
-    description: 'Lideré el desarrollo de aplicaciones web escalables utilizando React, Node.js y AWS. Reduje el tiempo de carga en un 40% y mejoré la experiencia del usuario.',
+    title: "Senior Full Stack Developer",
+    company: "Tech Corp",
+    period: "2022 — Presente",
+    description:
+      "Lideré el desarrollo de aplicaciones web escalables utilizando React, Node.js y AWS. Reduje el tiempo de carga en un 40% y mejoré la experiencia del usuario.",
   },
   {
-    title: 'Frontend Developer',
-    company: 'Startup Inc',
-    period: '2020 — 2022',
-    description: 'Construí interfaces de usuario responsivas y optimicé el rendimiento para sitios de e-commerce con alto tráfico. Implementé un design system desde cero.',
+    title: "Frontend Developer",
+    company: "Startup Inc",
+    period: "2020 — 2022",
+    description:
+      "Construí interfaces de usuario responsivas y optimicé el rendimiento para sitios de e-commerce con alto tráfico. Implementé un design system desde cero.",
   },
   {
-    title: 'Junior Developer',
-    company: 'Agency XYZ',
-    period: '2018 — 2020',
-    description: 'Desarrollé y mantuve sitios web para clientes de distintas industrias. Introduje mejores prácticas de accesibilidad y SEO técnico.',
+    title: "Junior Developer",
+    company: "Agency XYZ",
+    period: "2018 — 2020",
+    description:
+      "Desarrollé y mantuve sitios web para clientes de distintas industrias. Introduje mejores prácticas de accesibilidad y SEO técnico.",
   },
 ];
 
 const projects = [
   {
-    title: 'Astro vCard',
-    description: 'Un template de portfolio minimalista, responsivo y con buen SEO, construido con Astro y Tailwind CSS.',
-    image: '/proyecto.jpg',
-    tags: ['Astro', 'Tailwind', 'TypeScript'],
-    url: 'https://v-card-template.vercel.app',
-    github: 'https://github.com/tuusuario/vcard',
+    title: "Astro vCard",
+    description:
+      "Un template de portfolio minimalista, responsivo y con buen SEO, construido con Astro y Tailwind CSS.",
+    image: "/proyecto.jpg",
+    tags: ["Astro", "Tailwind", "TypeScript"],
+    url: "https://v-card-template.vercel.app",
+    github: "https://github.com/tuusuario/vcard",
   },
   {
-    title: 'E-commerce Dashboard',
-    description: 'Panel de control completo para gestionar tiendas online, con analíticas en tiempo real y gestión de inventario.',
-    image: '/proyecto1.jpg',
-    tags: ['React', 'Next.js', 'Supabase'],
-    url: '#',
-    github: 'https://github.com/tuusuario/dashboard',
+    title: "E-commerce Dashboard",
+    description:
+      "Panel de control completo para gestionar tiendas online, con analíticas en tiempo real y gestión de inventario.",
+    image: "/proyecto1.jpg",
+    tags: ["React", "Next.js", "Supabase"],
+    url: "#",
+    github: "https://github.com/tuusuario/dashboard",
   },
   {
-    title: 'API de Pagos',
-    description: 'Microservicio robusto para procesar pagos con integración a Stripe, manejo de webhooks y reconciliación automática.',
-    image: '',
-    tags: ['Node.js', 'TypeScript', 'PostgreSQL'],
-    github: 'https://github.com/tuusuario/payments-api',
+    title: "API de Pagos",
+    description:
+      "Microservicio robusto para procesar pagos con integración a Stripe, manejo de webhooks y reconciliación automática.",
+    image: "",
+    tags: ["Node.js", "TypeScript", "PostgreSQL"],
+    github: "https://github.com/tuusuario/payments-api",
   },
   {
-    title: 'CLI DevTools',
-    description: 'Herramienta de línea de comandos para automatizar flujos de trabajo de desarrollo, generación de boilerplate y deploy.',
-    image: '',
-    tags: ['Python', 'Click', 'Docker'],
-    github: 'https://github.com/tuusuario/devtools',
+    title: "CLI DevTools",
+    description:
+      "Herramienta de línea de comandos para automatizar flujos de trabajo de desarrollo, generación de boilerplate y deploy.",
+    image: "",
+    tags: ["Python", "Click", "Docker"],
+    github: "https://github.com/tuusuario/devtools",
   },
 ];
 ---
 
 <Layout title={`${profile.name} — ${profile.role}`} description={profile.bio}>
   <div id="top">
-    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
-      style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,61,143,0.15);">
-      <span class="font-display font-bold text-lg tracking-tight" style="color: var(--ink);">{profile.name}</span>
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
+      style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,61,143,0.15);"
+    >
+      <a
+        href="#top"
+        class="font-display font-bold text-lg tracking-tight"
+        style="color: var(--ink);">{profile.name}</a
+      >
 
       <!-- Desktop links -->
       <div class="hidden sm:flex items-center gap-6">
-        {['Stack', 'Experiencia', 'Proyectos', 'Contacto'].map(item => (
-          <a
-            href={`#${item.toLowerCase()}`}
-            class="font-mono text-xs tracking-widest transition-colors hover-pink"
-            style="color: rgba(13,13,13,0.55);"
-          >
-            {item.toUpperCase()}
-          </a>
-        ))}
+        {
+          ["Stack", "Experiencia", "Proyectos", "Contacto"].map((item) => (
+            <a
+              href={`#${item.toLowerCase()}`}
+              class="font-mono text-xs tracking-widest transition-colors hover-pink"
+              style="color: rgba(13,13,13,0.55);"
+            >
+              {item.toUpperCase()}
+            </a>
+          ))
+        }
       </div>
 
       <!-- Hamburger button (mobile) -->
-      <button id="menu-btn" class="sm:hidden flex flex-col gap-1.5 p-1" aria-label="Menú">
+      <button
+        id="menu-btn"
+        class="sm:hidden flex flex-col gap-1.5 p-1"
+        aria-label="Menú"
+      >
         <span class="hamburger-line line-1"></span>
         <span class="hamburger-line line-2"></span>
         <span class="hamburger-line line-3"></span>
@@ -114,48 +139,54 @@ const projects = [
     </nav>
 
     <!-- Mobile menu -->
-    <div id="mobile-menu"
+    <div
+      id="mobile-menu"
       class="fixed top-0 left-0 right-0 bottom-0 z-40 flex flex-col items-center justify-center gap-10 hidden"
-      style="background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);">
-      {['Stack', 'Experiencia', 'Proyectos', 'Contacto'].map((item, i) => (
-        <a
-          href={`#${item.toLowerCase()}`}
-          class="mobile-link font-display font-bold text-4xl tracking-tight"
-          style={`color: var(--ink); --delay: ${i * 0.08}s;`}
-        >
-          {item}
-        </a>
-      ))}
+      style="background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);"
+    >
+      {
+        ["Stack", "Experiencia", "Proyectos", "Contacto"].map((item, i) => (
+          <a
+            href={`#${item.toLowerCase()}`}
+            class="mobile-link font-display font-bold text-4xl tracking-tight"
+            style={`color: var(--ink); --delay: ${i * 0.08}s;`}
+          >
+            {item}
+          </a>
+        ))
+      }
     </div>
 
     <script>
-      const btn = document.getElementById('menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const links = document.querySelectorAll('.mobile-link');
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const links = document.querySelectorAll(".mobile-link");
 
-      btn?.addEventListener('click', () => {
-        const isOpen = !menu?.classList.contains('hidden');
+      btn?.addEventListener("click", () => {
+        const isOpen = !menu?.classList.contains("hidden");
         if (isOpen) {
           // Cerrar: animar hacia afuera
           links.forEach((link, i) => {
-            (link as HTMLElement).style.animation = `menuOut 0.3s ease forwards ${i * 0.06}s`;
+            (link as HTMLElement).style.animation =
+              `menuOut 0.3s ease forwards ${i * 0.06}s`;
           });
-          setTimeout(() => menu?.classList.add('hidden'), 400);
-          btn?.classList.remove('open');
+          setTimeout(() => menu?.classList.add("hidden"), 400);
+          btn?.classList.remove("open");
         } else {
-          menu?.classList.remove('hidden');
-          btn?.classList.add('open');
+          menu?.classList.remove("hidden");
+          btn?.classList.add("open");
           // Abrir: animar hacia adentro con delay escalonado
           links.forEach((link, i) => {
-            (link as HTMLElement).style.animation = `menuIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards ${i * 0.08}s`;
+            (link as HTMLElement).style.animation =
+              `menuIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards ${i * 0.08}s`;
           });
         }
       });
 
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-          menu?.classList.add('hidden');
-          btn?.classList.remove('open');
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu?.classList.add("hidden");
+          btn?.classList.remove("open");
         });
       });
     </script>
@@ -166,7 +197,9 @@ const projects = [
         width: 22px;
         height: 2px;
         background: var(--ink);
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
         transform-origin: center;
       }
       #menu-btn.open .line-1 {
@@ -187,20 +220,20 @@ const projects = [
         position: relative;
       }
       .mobile-link::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -4px;
         left: 0;
         width: 0;
         height: 2px;
-        background: #FF3D8F;
+        background: #ff3d8f;
         transition: width 0.3s ease;
       }
       .mobile-link:hover::after {
         width: 100%;
       }
       .mobile-link:hover {
-        color: #FF3D8F !important;
+        color: #ff3d8f !important;
       }
 
       @keyframes menuIn {
@@ -225,7 +258,7 @@ const projects = [
       }
 
       .hover-pink:hover {
-        color: #FF3D8F !important;
+        color: #ff3d8f !important;
       }
     </style>
 
